@@ -1,5 +1,32 @@
 #include "conv.h"
 
+void test_12_to_oct(void) {
+  uint8_t result[100] = {0};
+  int src_base=12;
+  int dst_base=10;
+
+  uint8_t tmp1[] = {0x10};
+  base_convert(tmp1, sizeof(tmp1), result, sizeof(result), src_base, dst_base);
+  assert(strcmp(result, "12") == 0);
+
+  uint8_t tmp2[] = {0x12};
+  base_convert(tmp2, sizeof(tmp2), result, sizeof(result), src_base, dst_base);
+  assert(strcmp(result, "14") == 0);
+
+  // 12a12a1212ab
+  uint8_t tmp3[] = {0x12,0xa1,0x2a,0x12,0x12,0xab};
+  base_convert(tmp3, sizeof(tmp3), result, sizeof(result), src_base, dst_base);
+  assert(strcmp(result, "918972700259") == 0);
+
+  // ab122222221222222222222222212129
+  uint8_t tmp4[] = {0xab,0x12,0x22,0x22,0x22,0x12,0x22,0x22,0x22,0x22,0x22,0x22,0x22,0x21,0x21,0x29};
+  base_convert(tmp4, sizeof(tmp4), result, sizeof(result), src_base, dst_base);
+  // 3.11196750780223e+34
+  assert(strcmp(result, "31119675078022301687079151459276593") == 0);
+
+  printf("func: %-20s passed\n", __func__);
+}
+
 void test_dec_to_oct(void) {
   uint8_t result[100] = {0};
   int src_base=10;
@@ -98,6 +125,7 @@ int main(int argc, char const *argv[]) {
   test_hex_to_dec();
   test_oct_to_dec();
   test_dec_to_oct();
+  test_12_to_oct();
   
   return 0;
 }
