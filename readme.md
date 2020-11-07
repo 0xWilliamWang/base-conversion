@@ -10,14 +10,24 @@ It can be easily integrated into a project because it doesn't have any other dep
 1. Only 0-16 is supported because four bits are used to store one digit in order to save space.
 1. Support for bases larger than 16 is easy, and requires only simple modifications.
 
-# api
+# usage
+**api**
 ```c
 int base_convert(const uint8_t *buffer, const uint8_t buffer_len, uint8_t *out,
                  const uint8_t out_capcity, const uint8_t src_base,
                  const uint8_t dst_base);
 ```
+**example**
+```c
+  // 1223244d2323434344554454454545454545454545454545545454
+  uint8_t tmp1[] = {0x12, 0x23, 0x24, 0x4d, 0x23, 0x23, 0x43, 0x43, 0x44,
+                    0x55, 0x44, 0x54, 0x45, 0x45, 0x45, 0x45, 0x45, 0x45,
+                    0x45, 0x45, 0x45, 0x45, 0x45, 0x45, 0x54, 0x54, 0x54};
+  base_convert(tmp1, sizeof(tmp1), result, sizeof(result), 16, 10);
+  assert(strcmp(result,"7461241206556999471574479633161605519200171385253631869597275220") ==0);
+```
 
-# test
+**test**
 >see test.c
 ```c
 int main(int argc, char const *argv[]) {
