@@ -1,5 +1,23 @@
 #include "conv.h"
 
+void test_oct_to_dec(void) {
+  uint8_t result[100] = {0};
+  int src_base=8;
+  int dst_base=10;
+
+  base_convert((uint8_t[]){0x11, 0x11}, 2, result, sizeof(result), src_base, dst_base);
+  assert(strcmp(result, "585") == 0);
+
+  // 12321415435265754766522113423423223412
+  uint8_t tmp1[] = {0x12, 0x32, 0x14, 0x15, 0x43, 0x52, 0x65, 0x75, 0x47, 0x66,
+                    0x52, 0x21, 0x13, 0x42, 0x34, 0x23, 0x22, 0x34, 0x12};
+  base_convert(tmp1, sizeof(tmp1), result, sizeof(result), src_base, dst_base);
+  // 3.3779887201256976e+33
+  assert(strcmp(result, "3377988720125697475487641939814154") == 0);
+
+  printf("func: %-20s passed\n", __func__);
+}
+
 void test_bin_to_dec(void) {
   uint8_t result[100] = {0};
 
@@ -62,5 +80,6 @@ void test_hex_to_dec(void) {
 int main(int argc, char const *argv[]) {
   test_bin_to_dec();
   test_hex_to_dec();
+  test_oct_to_dec();
   return 0;
 }
