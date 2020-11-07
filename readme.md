@@ -25,6 +25,12 @@ int base_convert(const uint8_t *buffer, const uint8_t buffer_len, uint8_t *out,
                     0x45, 0x45, 0x45, 0x45, 0x45, 0x45, 0x54, 0x54, 0x54};
   base_convert(tmp1, sizeof(tmp1), result, sizeof(result), 16, 10);
   assert(strcmp(result,"7461241206556999471574479633161605519200171385253631869597275220") ==0);
+
+  // ab122222221222222222222222212129
+  uint8_t tmp4[] = {0xab,0x12,0x22,0x22,0x22,0x12,0x22,0x22,0x22,0x22,0x22,0x22,0x22,0x21,0x21,0x29};
+  base_convert(tmp4, sizeof(tmp4), result, sizeof(result), 12, 10);
+  // 3.11196750780223e+34
+  assert(strcmp(result, "31119675078022301687079151459276593") == 0);  
 ```
 
 **test**
