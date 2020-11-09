@@ -1,13 +1,14 @@
 # intro
-This is a C language implementation of a 0-16 arbitrary decimal number conversion function.This code can run on an embedded chip, such as Cortex-M3.
+This is a C language implementation of the number of the hexadecimal conversion library, support between 2-16 any base. Big numbers are also supported. This code can run on an embedded chip, such as Cortex-M3.
 It can be easily integrated into a project because it doesn't have any other dependencies.Just include the conv.c and conv.h files.
 
 # feature
-1. there are no dependencies other than standard c99 library functions.
-1. no malloc func
+1. There are no dependencies other than standard c99 library functions.
+1. No malloc func
+1. Support big number
 
 # limit
-1. Only 0-16 is supported because four bits are used to store one digit in order to save space.
+1. Only between binary and hexadecimal is supported, because four bits are used to store one digit in order to save space.
 1. Support for bases larger than 16 is easy, and requires only simple modifications.
 
 # usage
