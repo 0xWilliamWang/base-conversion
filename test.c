@@ -5,6 +5,10 @@ void test_12_to_oct(void) {
   int src_base=12;
   int dst_base=10;
 
+  uint8_t tmp0[] = {0x00,0x00,0x10};
+  base_convert(tmp0, sizeof(tmp0), result, sizeof(result), src_base, dst_base);
+  assert(strcmp(result, "12") == 0);
+
   uint8_t tmp1[] = {0x10};
   base_convert(tmp1, sizeof(tmp1), result, sizeof(result), src_base, dst_base);
   assert(strcmp(result, "12") == 0);
