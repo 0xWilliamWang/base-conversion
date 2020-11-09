@@ -1,7 +1,7 @@
 #include "conv.h"
 
 void test_12_to_oct(void) {
-  uint8_t result[100] = {0};
+  char result[100] = {0};
   int src_base=12;
   int dst_base=10;
 
@@ -32,7 +32,7 @@ void test_12_to_oct(void) {
 }
 
 void test_dec_to_oct(void) {
-  uint8_t result[100] = {0};
+  char result[100] = {0};
   int src_base=10;
   int dst_base=8;
 
@@ -48,7 +48,7 @@ void test_dec_to_oct(void) {
 }
 
 void test_oct_to_dec(void) {
-  uint8_t result[100] = {0};
+  char result[100] = {0};
   int src_base=8;
   int dst_base=10;
 
@@ -66,7 +66,7 @@ void test_oct_to_dec(void) {
 }
 
 void test_bin_to_dec(void) {
-  uint8_t result[100] = {0};
+  char result[100] = {0};
 
   base_convert((uint8_t[]){0x10, 0x10}, 2, result, sizeof(result), 2, 10);
   assert(strcmp(result, "10") == 0);
@@ -90,7 +90,7 @@ void test_bin_to_dec(void) {
 }
 
 void test_hex_to_dec(void) {
-  uint8_t result[100] = {0};
+  char result[100] = {0};
 
   base_convert((uint8_t[]){0xae, 0x3a}, 2, result, sizeof(result), 16, 10);
   assert(strcmp(result, "44602") == 0);

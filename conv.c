@@ -2,8 +2,8 @@
 
 #define BUFFER_SIZE 100
 
-int base_convert(const uint8_t *buffer, const uint8_t buffer_len, uint8_t *out,
-                 const uint8_t out_capcity, const uint8_t src_base,
+size_t base_convert(const uint8_t *buffer, const uint8_t buffer_len, char *out,
+                 const size_t out_capcity, const uint8_t src_base,
                  const uint8_t dst_base) {
   if (BUFFER_SIZE < buffer_len)
     return -1;
@@ -14,7 +14,7 @@ int base_convert(const uint8_t *buffer, const uint8_t buffer_len, uint8_t *out,
 
   memcpy(quotients, buffer, buffer_len);
 
-  int out_len = 0;
+  size_t out_len = 0;
   int div_index = 0;
   int remainder = 0;
   uint8_t tmp1, tmp2 = 0;
@@ -52,7 +52,7 @@ int base_convert(const uint8_t *buffer, const uint8_t buffer_len, uint8_t *out,
   if (out_capcity < out_len + 1)
     return -1;
 
-  int index = 0;
+  size_t index = 0;
   for (; index < out_len;) {
     out[index++] = last_remainders[out_len - index - 1] + '0';
   }

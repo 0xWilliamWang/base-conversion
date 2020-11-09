@@ -14,8 +14,8 @@ It can be easily integrated into a project because it doesn't have any other dep
 # usage
 **api**
 ```c
-int base_convert(const uint8_t *buffer, const uint8_t buffer_len, uint8_t *out,
-                 const uint8_t out_capcity, const uint8_t src_base,
+size_t base_convert(const uint8_t *buffer, const uint8_t buffer_len, char *out,
+                 const size_t out_capcity, const uint8_t src_base,
                  const uint8_t dst_base);
 ```
 **example**
