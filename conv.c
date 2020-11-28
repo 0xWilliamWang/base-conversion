@@ -56,7 +56,7 @@ size_t base_convert(const uint8_t *buffer, const uint8_t buffer_len, char *out,
   for (; index < out_len;) {
     out[index++] = last_remainders[out_len - index - 1] + '0';
   }
-  out[index++] = 0;
+  out[index] = 0;
   return index;
 }
 
